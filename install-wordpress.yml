@@ -1,0 +1,34 @@
+- hosts: all
+  tasks:
+  - name: Disable SELinux
+    selinux:
+      state: disabled
+    when: ansible_os_family == "RedHat"
+  # - name: Install PHP
+  #   import_role:
+  #     name: ansible-php-role
+  #   when: 
+  #   - ansible_os_family == "RedHat"
+  #   - group_names.0 == "web"
+
+  # - name: Install Apache
+  #   import_role:
+  #     name: ansible-apache-role
+  #   when: 
+  #   - ansible_os_family == "RedHat"
+  #   - group_names.0 == "web"
+
+  # - name: Install MariaDB
+  #   import_role:
+  #     name: ansible-mysql-role
+  #   when:
+  #   -  ansible_os_family == "RedHat"
+  #   - group_names.0 == "db"
+
+
+  - name: Install Wordpress
+    import_role:
+      name: ansible-wordpress-role
+    when:
+    -  ansible_os_family == "RedHat"
+    - group_names.0 == "web"
