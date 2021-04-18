@@ -1,0 +1,6 @@
+[web]
+qa_web1 ansible_host=138.197.8.153
+
+[db]
+qa_db1 ansible_host=104.236.82.177
+
